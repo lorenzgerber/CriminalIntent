@@ -139,11 +139,12 @@ public class CrimeListFragment extends Fragment {
         } else {
             // dirty hack because ArrayList is always new pulled
             // from linked HashMap
-            mAdapter = new CrimeAdapter(crimes);
-            mCrimeRecyclerView.setAdapter(mAdapter);
+            mAdapter.setCrimes(crimes);
+            //mAdapter = new CrimeAdapter(crimes);
+            //mCrimeRecyclerView.setAdapter(mAdapter);
 
             mAdapter.notifyDataSetChanged();
-            mAdapter.notifyItemChanged(mAdapterPosition);
+            //mAdapter.notifyItemChanged(mAdapterPosition);
         }
 
         updateSubtitle();
@@ -214,6 +215,10 @@ public class CrimeListFragment extends Fragment {
         @Override
         public int getItemCount() {
             return mCrimes.size();
+        }
+
+        public void setCrimes(List<Crime> crimes){
+            mCrimes = crimes;
         }
 
 
